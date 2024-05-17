@@ -1,0 +1,23 @@
+//New to the Multidimensional Array
+#include<stdio.h>
+
+int main() {
+  int matrix[][4] = {{14, 10, 6, 4}, {3, 7, 18, 11}, {13, 9, 5, 17}, {19, 12, 2, 1}}; 
+  int sum = 0;
+
+  // Checkpoint 1 code goes here.
+  printf("%i",matrix[3][1]);
+  // Checkpoint 2 code goes here.
+  int rowD = sizeof(matrix)/sizeof(matrix[0]);
+  int colD = sizeof(matrix[0])/sizeof(int);
+
+  for(int i = 0; i < rowD; i++)
+  {
+    for(int s = 0; s < colD; s++)
+    {
+      sum += matrix[i][s];
+    }
+  }
+  printf("\n%d",sum);
+}
+
