@@ -20,3 +20,20 @@ int main() {
   printf("%d\n", myNumber);
   myFunc();
 }
+
+#include <stdio.h>
+#include <stdbool.h>
+
+int checkleap(int);
+
+int main() {
+  int inputyear = 3213;
+  printf("%d\n",checkleap(inputyear));
+}
+
+int checkleap(int input){
+  if(input > 100){
+    input = 1;
+  }
+  return input;
+}
