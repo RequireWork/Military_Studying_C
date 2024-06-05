@@ -6,13 +6,13 @@
 struct Race{
   int numberOfLaps;
   int currentLap;
-  char* firstPlaceDriverName[10];
-  char* firstPlaceRaceCarColor[10];
+  char* firstPlaceDriverName;
+  char* firstPlaceRaceCarColor;
 };
 
 struct RaceCar{
-  char* driverName[10];
-  char* raceCarColor[10];
+  char* driverName;
+  char* raceCarColor;
   int totalLapTime;
 };
 // Print functions section
@@ -25,11 +25,11 @@ void printCountDown(void){
 }
 
 void printFirstPlaceAfterLap(struct Race race){
-  printf("After lap number %d\n First Place Is: %s in the %s race car!",race.totalLapTime,race.driverName,race.raceCarColor);
+  printf("After lap number %d\n First Place Is: %s in the %s race car!",race.currentLap,race.firstPlaceDriverName,race.firstPlaceRaceCarColor);
 }
 
 void printCongratulation(struct Race race){
-  printf("Let's all congratulate %s in the %s race car for an amazing performance.\n It truly was a agreat race and everybody have a goodnight!");
+  printf("Let's all congratulate %s in the %s race car for an amazing performance.\n It truly was a a great race and everybody have a goodnight!",race.driverName,race.raceCarColor);
 }
 // Logic functions section
 int calculateTimeToCompleteLap(){
@@ -37,6 +37,10 @@ int calculateTimeToCompleteLap(){
   int acceleration = (rand()%3)+1;
   int nerves = (rand()%3)+1;
   return speed+acceleration+nerves;
+}
+
+void updateRaceCar(struct RaceCar* raceCar){
+  raceCar.totalLapTime += calculateTimeToComplete();
 }
 
 void updateFirstPlace(struct Race* race, struct RaceCar* raceCar1, struct RaceCar* raceCar2){
@@ -56,12 +60,16 @@ void startRace(RaceCar* raceCar1, RaceCar* raceCar2){
     raceCar1->totalLapTime += 1;
     raceCar2->totalLapTime += 1;
     updateFirstPlace(race,raceCar1,raceCar2);
-    printFirstPlaceAfterLap();
+    printFirstPlaceAfterLap(race);
   }
+  printCongratulation(race);
 }
 
 int main() {
 	srand(time(0));
+  struct RaceCar* raceCar1 = {"Son","Blue",4};
+  struct RaceCar* raceCar2 = {"Gon","Red",3};
   printIntro();
   printCountDown();
+  startRace(&raceCar1, &raceCar2)
 };
