@@ -6,13 +6,13 @@
 struct Race{
   int numberOfLaps;
   int currentLap;
-  char firstPlaceDriverName[10];
-  char firstPlaceRaceCarColor[10];
+  char* firstPlaceDriverName[10];
+  char* firstPlaceRaceCarColor[10];
 };
 
 struct RaceCar{
-  char driverName[10];
-  char raceCarColor[10];
+  char* driverName[10];
+  char* raceCarColor[10];
   int totalLapTime;
 };
 // Print functions section
@@ -39,7 +39,26 @@ int calculateTimeToCompleteLap(){
   return speed+acceleration+nerves;
 }
 
+void updateFirstPlace(struct Race* race, struct RaceCar* raceCar1, struct RaceCar* raceCar2){
+  if(raceCar1->totalLapTime <= raceCar2->totalLapTime){
+    race.firstPlaceDriverName = raceCar1->driverName;
+    race.firstPlaceRaceCarColor = raceCar1.raceCarColor;
+  }
+  else{
+    race.firstPlaceDriverName = raceCar2->driverName;
+    race.firstPlaceRaceCarColor = raceCar2.raceCarColor;
+  }
+}
 
+void startRace(RaceCar* raceCar1, RaceCar* raceCar2){
+  struct Race race = {5,1,"",""};
+  for(int i = 0; i < race.numberOfLaps; i++){
+    raceCar1->totalLapTime += 1;
+    raceCar2->totalLapTime += 1;
+    updateFirstPlace(race,raceCar1,raceCar2);
+    printFirstPlaceAfterLap();
+  }
+}
 
 int main() {
 	srand(time(0));
