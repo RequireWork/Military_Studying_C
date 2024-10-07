@@ -1,0 +1,39 @@
+using System;
+
+namespace HelloWorld
+{
+  class Program
+  {
+    static void Main()
+    {
+      Console.WriteLine("YJ!");    
+      string howsyourday = Console.ReadLine();
+      Console.WriteLine($"The name is {howsyourday}");
+     }
+  }
+}
+
+-----------------------------------------------------------------------------
+
+using System;
+
+namespace ConsoleCreatures
+{
+  class Program
+  {
+    static void Main()
+    {
+      //This code is written in order to draw a squid!
+      Console.WriteLine(" .-.");   
+      Console.WriteLine("(o o)"); 
+      Console.WriteLine("| 0 |");
+      Console.WriteLine("|   |");
+      Console.WriteLine("'~~~'");   
+      Console.WriteLine("Say hello to octo hyung");
+     }
+  }
+}
+
+-----------------------------------------------------------------------------
+
+
